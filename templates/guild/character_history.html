@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load guild_filter %}
+{% block content %}
+
+
+<h2>{{character_name}}</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-sm table-bordered border-light">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col" class="">field</th>
+            <th scope="col" class="">before_data</th>
+            <th scope="col" class="">after_data</th>
+            <th scope="col" class="">date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if character_history %}
+        {% for history in character_history %}
+        <tr>
+            <td>{{history.field}}</a></td>
+            <td>{{history.before_data}}</td>
+            <td>{{history.after_data}}</td>
+            <td>{{history.date}}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td>no data</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

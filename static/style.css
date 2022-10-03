@@ -1,0 +1,49 @@
+main > .container {
+  padding: 60px 10px 0;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.table{
+    table-layout:fixed;
+    font-size:12px;
+}
+
+.detail{
+    display: none;
+    position: absolute;
+    padding: 8px;
+    color: #fff;
+    background-color: #333;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+
+}
+
+p:hover + span.detail {
+    display: block;
+}
+
+.th-name {width:5rem}
+.th-class {width:5rem}
+.th-itemlv {width:4rem}
+.th-battlelv {width:3rem}
+.th-expeditionlv {width:3rem}
+.th-engraving {width:4rem}
+.th-stat {width:5rem}
+.th-card {width:6rem}
+.th-gem {width:6rem}
+.th-equipment {width:3rem}
+.th-power {width:4rem}
+.th-vitality {width:4rem}
+.th-date {width:4rem}
+
+
+

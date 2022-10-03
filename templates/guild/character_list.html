@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load guild_filter %}
+{% block content %}
+
+
+<h2>Section title</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-sm table-bordered border-light">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col" class="th-name">닉네임</th>
+            <th scope="col" class="th-class">클래스</th>
+            <th scope="col" class="th-itemlv">아이템</th>
+            <th scope="col" class="th-battlelv">전투</th>
+            <th scope="col" class="th-expeditionlv">원정대</th>
+            <th scope="col" class="th-engraving">각인</th>
+            <th scope="col" class="th-stat">특성</th>
+            <th scope="col" class="th-card">카드</th>
+            <th scope="col" class="th-gem">보석</th>
+            <th scope="col" class="th-equipment">무기</th>
+            <th scope="col" class="th-power">공격력</th>
+            <th scope="col" class="th-vitality">체력</th>
+            <th scope="col" class="th-date">lastupdate</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if character_list %}
+        {% for character in character_list %}
+        <tr>
+            <td><a href="{% url 'guild:history' character.character_name%}" target="_blank">{{character.character_name}}</a></td>
+            <td>{{character.character_class}}</td>
+            <td>{{character.character_item_level}}</td>
+            <td>{{character.character_battle_level}}</td>
+            <td>{{character.character_expedition_level}}</td>
+            <td>
+                <p>{{character.engraving_simple}}</p>
+                <span class="detail">
+                    {% for engraving in character.engraving_as_list %}
+                    <p>{{engraving}}</p>
+                    {% endfor %}
+                </span>
+            </td>
+            <td class="td-stat">
+                {% for stat in character.stat_as_list %}
+                <p>{{stat}}</p>
+                {% endfor %}
+            </td>
+            <td>{{character.character_card}}</td>
+            <td>
+                {% for gem in character.gem_simple %}
+                <p>{{gem}}</p>
+                {% endfor %}
+            </td>
+            <td>
+                <p>{{character.equipment_weapon_lv}}</p>
+                <span class="detail">
+                    {% for equipment in character.equipment_as_list %}
+                    <p>{{equipment}}</p>
+                    {% endfor %}
+                </span>
+            </td>
+            <td>{{character.character_power}}</td>
+            <td>{{character.character_vitality}}</td>
+            <td>{{character.elapsed_time}}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td>no data</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
