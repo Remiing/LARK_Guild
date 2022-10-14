@@ -34,6 +34,9 @@ class Member(models.Model):
     def engraving_as_list(self):
         return self.character_engraving.split(',')
 
+    def card_slice(self):
+        return self.character_card.replace(')', '').split(' (')
+
     def gem_simple(self):
         if not self.character_gem: return
         gem_list = self.character_gem.split(',')

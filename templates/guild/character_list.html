@@ -3,10 +3,10 @@
 {% block content %}
 
 
-<h2>Section title</h2>
-<div class="table-responsive">
-    <table class="table table-striped table-sm table-bordered border-light">
-        <thead class="table-dark">
+<h1>DAY CHART</h1>
+<div class="table-responsive text-nowrap">
+    <table class="table">
+        <thead>
         <tr>
             <th scope="col" class="th-name">닉네임</th>
             <th scope="col" class="th-class">클래스</th>
@@ -20,7 +20,7 @@
             <th scope="col" class="th-equipment">무기</th>
             <th scope="col" class="th-power">공격력</th>
             <th scope="col" class="th-vitality">체력</th>
-            <th scope="col" class="th-date">lastupdate</th>
+            <th scope="col" class="th-date">update</th>
         </tr>
         </thead>
         <tbody>
@@ -34,18 +34,22 @@
             <td>{{character.character_expedition_level}}</td>
             <td>
                 <p>{{character.engraving_simple}}</p>
-                <span class="detail">
+                <div class="detail">
                     {% for engraving in character.engraving_as_list %}
                     <p>{{engraving}}</p>
                     {% endfor %}
-                </span>
+                </div>
             </td>
             <td class="td-stat">
                 {% for stat in character.stat_as_list %}
                 <p>{{stat}}</p>
                 {% endfor %}
             </td>
-            <td>{{character.character_card}}</td>
+            <td>
+                {% for card in character.card_slice %}
+                <p>{{card}}</p>
+                {% endfor %}
+            </td>
             <td>
                 {% for gem in character.gem_simple %}
                 <p>{{gem}}</p>
@@ -53,11 +57,11 @@
             </td>
             <td>
                 <p>{{character.equipment_weapon_lv}}</p>
-                <span class="detail">
+                <div class="detail">
                     {% for equipment in character.equipment_as_list %}
                     <p>{{equipment}}</p>
                     {% endfor %}
-                </span>
+                </div>
             </td>
             <td>{{character.character_power}}</td>
             <td>{{character.character_vitality}}</td>

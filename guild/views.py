@@ -5,8 +5,14 @@ from .models import History
 
 
 def index(request):
-    character_list = Member.objects.order_by('-character_item_level')
+    # character_list = Member.objects.order_by('-character_item_level')
     # character_list = Member.objects.extra(select={'character_item_level_int': 'CAST(character_item_level AS INTEGER)'}).order_by('-character_item_level_int')
+    context = {}
+    return render(request, 'guild/index.html', context)
+
+
+def chart(request):
+    character_list = Member.objects.order_by('-character_item_level')
     context = {'character_list': character_list}
     return render(request, 'guild/character_list.html', context)
 

@@ -2,8 +2,13 @@ main > .container {
   padding: 60px 10px 0;
 }
 
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
 .container {
-  max-width: 1200px;
+  max-width: 1010px;
 }
 
 p {
@@ -11,8 +16,7 @@ p {
 }
 
 .table{
-    table-layout:fixed;
-    font-size:12px;
+    font-size:13px;
 }
 
 .detail{
@@ -27,23 +31,11 @@ p {
 
 }
 
-p:hover + span.detail {
+p:hover + div.detail {
     display: block;
 }
 
-.th-name {width:5rem}
-.th-class {width:5rem}
-.th-itemlv {width:4rem}
-.th-battlelv {width:3rem}
-.th-expeditionlv {width:3rem}
-.th-engraving {width:4rem}
-.th-stat {width:5rem}
-.th-card {width:6rem}
-.th-gem {width:6rem}
-.th-equipment {width:3rem}
-.th-power {width:4rem}
-.th-vitality {width:4rem}
-.th-date {width:4rem}
+
 
 
 
