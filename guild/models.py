@@ -70,8 +70,16 @@ class History(models.Model):
     after_data = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now_add=True)
 
-
-
-
+    def field_trans(self):
+        if self.field == 'character_item_level': return '아이템레벨'
+        elif self.field == 'character_battle_level': return '전투레벨'
+        elif self.field == 'character_expedition_level': return '원정대레벨'
+        elif self.field == 'character_engraving': return '각인'
+        elif self.field == 'character_stat': return '특성'
+        elif self.field == 'character_card': return '카드'
+        elif self.field == 'character_gem': return '보석'
+        elif self.field == 'character_equipment_level': return '장비'
+        elif self.field == 'character_power': return '공격력'
+        elif self.field == 'character_vitality': return '생명력'
 
 

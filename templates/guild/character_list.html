@@ -28,10 +28,10 @@
         {% for character in character_list %}
         <tr>
             <td><a href="{% url 'guild:history' character.character_name%}" target="_blank">{{character.character_name}}</a></td>
-            <td>{{character.character_class}}</td>
-            <td>{{character.character_item_level}}</td>
-            <td>{{character.character_battle_level}}</td>
-            <td>{{character.character_expedition_level}}</td>
+            <td><p>{{character.character_class}}</p></td>
+            <td><p>{{character.character_item_level}}</p></td>
+            <td><p>{{character.character_battle_level}}</p></td>
+            <td><p>{{character.character_expedition_level}}</p></td>
             <td>
                 <p>{{character.engraving_simple}}</p>
                 <div class="detail">
@@ -63,9 +63,18 @@
                     {% endfor %}
                 </div>
             </td>
-            <td>{{character.character_power}}</td>
-            <td>{{character.character_vitality}}</td>
-            <td>{{character.elapsed_time}}</td>
+            <td><p>{{character.character_power}}</p></td>
+            <td><p>{{character.character_vitality}}</p></td>
+            <td>
+                <p>{{character.elapsed_time}}</p>
+                <div class="detail">
+                    {% for history in character_history|get_item:character.character_name %}
+                    <p class="history_title">{{history.field_trans}}</p>
+                    <p>{{history.before_data}}</p>
+                    <p>{{history.after_data}}</p>
+                    {% endfor %}
+                </div>
+            </td>
         </tr>
         {% endfor %}
         {% else %}

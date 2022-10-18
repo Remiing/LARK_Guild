@@ -222,18 +222,28 @@ def add_data(character_data):
     member_obj.save()
 
 
-def test(character_name):
+def test():
     # member_obj = Member.objects.filter(character_name=character_name).first()
     # print(member_obj.__dict__)
     # for key, value in member_obj.__dict__.items():
     #     print(key, '|', value)
-    character_data = get_member_data(character_name)
-    character_data_compare(character_data)
+    #character_data = get_member_data(character_name)
+    #character_data_compare(character_data)
+    character_list = Member.objects.order_by('-character_item_level')
+    # character_history = {}
+    for character in character_list:
+        character_name = character.character_name
+        last_update = character.modified_date.date()
+        print(character_name, last_update)
+        character_history = History.objects.filter(character_name=character_name, date__gte=last_update)
+        for i in character_history:
+            print(i.date)
 
 
 
-if __name__ == '__main__':
-    guild_memeber = ['너와떠나는여행', '채연', '유혈랑', '우유맛조아', '데이지아SR', '남순이견주', '묵련비', '피망꼬치구이', '강배', '명하누', '킹기다킹기', '배천덕', '송저송', '블루밍소설', '신레델라', '그거저아닌데', '배낼', '헵짚', '야레기', '능동로무법자', '메리크리스마스', '커피바드세요', '능동로솜주먹', '퍄닥퍄닥퍄닥퍄닥', '귀여운눈나', 'S순이견주2', '보이드어벤저', '잠옷소년', '추합', '썬연료2', '왜이리더워', '붕슼', '그리워아만', '훈건창', '파이터팽', '꿈꾸세요', '시린미', '대근짱짱', '돈룡', '징징EYA']
+def compare_data():
+    guild_memeber = ['너와떠나는여행', '채연', '유혈랑', '우유맛조아', '데이지아SR', '남순이견주', '묵련비', '피망꼬치구이', '강배', '명하누', '킹기다킹기', '배천덕', '송저송', '블루밍소설', '신레델라', '그거저아닌데', '배낼', '헵짚', '야레기', '능동로무법자', '메리크리스마스', '커피바드세요', '능동로솜주먹', '퍄닥퍄닥퍄닥퍄닥', '귀여운눈나', 'S순이견주2', '보이드어벤저', '잠옷소년', '추합', '썬연료2', '왜이리더워', '붕슼', '그리워아만',
+                     '훈건창', '파이터팽']
     db_member = []
     for member_obj in Member.objects.all():
         db_member.append(member_obj.character_name)
@@ -251,7 +261,10 @@ if __name__ == '__main__':
             print(f'{member_name} data compared')
             print('-----------------------------------')
 
-    # test('너와떠나는여행')
+
+if __name__ == '__main__':
+    #compare_data()
+    test()
 
 
     # character_name = '너와떠나는여행'

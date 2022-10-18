@@ -1,5 +1,5 @@
 main > .container {
-  padding: 60px 10px 0;
+    padding: 60px 10px 0;
 }
 
 a{
@@ -8,11 +8,16 @@ a{
 }
 
 .container {
-  max-width: 1010px;
+    max-width: 1010px;
 }
 
 p {
-  margin-bottom: 0;
+    margin-bottom: 0;
+}
+
+.history_title{
+    font-size:14px;
+    color: yellow;
 }
 
 .table{
@@ -22,6 +27,7 @@ p {
 .detail{
     display: none;
     position: absolute;
+    transform: translate(-10%);
     padding: 8px;
     color: #fff;
     background-color: #333;

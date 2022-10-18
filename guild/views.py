@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Member
@@ -13,7 +14,12 @@ def index(request):
 
 def chart(request):
     character_list = Member.objects.order_by('-character_item_level')
-    context = {'character_list': character_list}
+    character_history = {}
+    for character in character_list:
+        character_name = character.character_name
+        last_update = character.modified_date.date()
+        character_history[character_name] = History.objects.filter(character_name=character_name, date__gte=last_update)
+    context = {'character_list': character_list, 'character_history': character_history}
     return render(request, 'guild/character_list.html', context)
 
 
