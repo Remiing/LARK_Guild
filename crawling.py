@@ -171,10 +171,11 @@ def character_data_compare(character_data):
         equipment_new_list = after_data.split(',')
         equipment_exist_simple = list(map(int, [value.split(' ')[0] for value in before_data.split(',')]))
         equipment_new_simple = list(map(int, [value.split(' ')[0] for value in after_data.split(',')]))
-        for i, (num_exist, num_new) in enumerate(zip(equipment_exist_simple, equipment_new_simple)):
-            if num_exist < num_new:
-                add_history(member_obj, field, equipment_exist_list[i], equipment_new_list[i])
-        member_obj.character_equipment_level = character_data[field]
+        if equipment_exist_simple != equipment_new_simple:
+            for i, (num_exist, num_new) in enumerate(zip(equipment_exist_simple, equipment_new_simple)):
+                if num_exist != num_new:
+                    add_history(member_obj, field, equipment_exist_list[i], equipment_new_list[i])
+            member_obj.character_equipment_level = character_data[field]
 
     # 공격력
     field = 'character_power'
@@ -263,8 +264,8 @@ def compare_data():
 
 
 if __name__ == '__main__':
-    #compare_data()
-    test()
+    compare_data()
+    #test()
 
 
     # character_name = '너와떠나는여행'
